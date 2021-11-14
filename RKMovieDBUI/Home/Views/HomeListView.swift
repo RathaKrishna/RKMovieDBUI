@@ -19,6 +19,9 @@ struct HomeListView: View {
     @State private var gridLayoutCount = 2
     @State private var showDetails = false
     @State private var selectedSeries = seriesList[0]
+    
+    var trendingMovie: MovieData = load("movie_db.json")
+    
     var body: some View {
         ZStack {
             GeometryReader { geometry in
@@ -27,7 +30,9 @@ struct HomeListView: View {
                     TopBarView()
                         .padding(.all, 10)
                         .onTapGesture {
-                            self.showDetails = true
+                            if self.gridLayoutCount == 2 {
+                                self.gridLayoutCount = 1
+                            }  else { self.gridLayoutCount = 2 }
                         }
                     
                     ScrollView{
@@ -44,7 +49,7 @@ struct HomeListView: View {
                                 NowShowing(movieType: self.movieType)
                                     .padding(.leading, 20)
                                     .padding(.vertical, 10)
-                                TrendingView(gridLayout: gridLayout)
+                                TrendingView(gridLayout: gridLayout, moviesList: trendingMovie.movies)
                                     .padding(.vertical, 10)
                                     .padding(.horizontal, 10)
                             }
@@ -79,11 +84,14 @@ struct HomeListView: View {
                         self.showDetails = false
                     }
                 
-                MovieDetailsView(isShow: $showDetails, seriesModel: self.selectedSeries)
+                MovieDetailsView(isShow: $showDetails, seriesModel: selectedSeries)
                     .transition(.move(edge: .bottom))
                     .animation(.easeOut(duration: 0.2))
                 
             }
+        }
+        .onAppear {
+            print("check array \(trendingMovie)")
         }
         
     }
@@ -144,9 +152,7 @@ struct AvatarView: View {
 struct CategoryView: View {
     
     @Binding var movieType: MoviesType
-    
-    var selectedBg = Gradient(colors: [.lightRed , .darkRed])
-    var normalBg = Gradient(colors: [.gray , .black])
+  
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -195,8 +201,10 @@ struct NowShowing: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
                     ForEach(movieType == MoviesType.all ? seriesList :  seriesList.filter { $0.type == movieType}) { series in
-                        MovieCardsView(imageName: series.image, title: series.title, ratings: series.ratings)
-                            .frame(width: 200, height: 300)
+                        NavigationLink(destination:MovieDetailsView(isShow: .constant(false), seriesModel: series)) {
+                            MovieCardsView(imageName: series.image, title: series.title, ratings: series.ratings)
+                                .frame(width: 200, height: 300)
+                        }
                             
                     }
                     
@@ -213,6 +221,7 @@ struct NowShowing: View {
 struct TrendingView: View {
     
     var gridLayout: [GridItem]
+    var moviesList: [MovieData.Movies]
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -221,12 +230,14 @@ struct TrendingView: View {
                 .padding(.bottom, 20)
               
             LazyVGrid(columns: gridLayout, alignment: .center, spacing: 10) {
-                ForEach(seriesList) { series in
+                ForEach(moviesList.indices, id:\.self) { index in
                     
-                    MovieCardsView(imageName: series.image, title: series.title, ratings: series.ratings)
-                        .frame(minWidth: 0, maxWidth: .infinity)
-                        .frame(height: 200)
+                    NavigationLink(destination: MovieDetailView(series: moviesList[index])) {
+                        MovieCardsView(imageName: moviesList[index].posterUrl, title: moviesList[index].title, ratings: "4.5")
+                            .frame(minWidth: 0, maxWidth: .infinity)
+                            .frame(height: 200)
                         .animation(.interactiveSpring())
+                    }
                       
                 }
             }

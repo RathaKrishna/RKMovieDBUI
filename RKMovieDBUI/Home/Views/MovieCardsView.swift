@@ -44,8 +44,8 @@ struct MovieCardsView: View {
                                         Spacer()
                                         
                                         Text(self.title)
-                                        .font(.system(.title, design: .rounded))
-                                        .fontWeight(.heavy)
+                                        .font(.system(.title2, design: .rounded))
+                                        .fontWeight(.bold)
                                         .foregroundColor(.white)
                                         .padding()
                                         .frame(width: geometry.size.width, alignment: .bottomLeading)

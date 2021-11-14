@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -27,6 +27,10 @@
 		04CDC423273F5B3000A69D6A /* MovieDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDC422273F5B2F00A69D6A /* MovieDetailsView.swift */; };
 		04CDC428273F5F1400A69D6A /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDC427273F5F1400A69D6A /* BottomSheet.swift */; };
 		04CDC430273F61D600A69D6A /* BlankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDC42F273F61D600A69D6A /* BlankView.swift */; };
+		BF0BECDB273FBE5D00EC7BC4 /* MovieDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0BECDA273FBE5D00EC7BC4 /* MovieDetailView.swift */; };
+		BF0BECDE273FC9DF00EC7BC4 /* movie_db.json in Resources */ = {isa = PBXBuildFile; fileRef = BF0BECDD273FC9DF00EC7BC4 /* movie_db.json */; };
+		BF0BECE0273FCCE200EC7BC4 /* MovieModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0BECDF273FCCE200EC7BC4 /* MovieModelData.swift */; };
+		BF0BECE3273FD94600EC7BC4 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = BF0BECE2273FD94600EC7BC4 /* SDWebImageSwiftUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +77,9 @@
 		04CDC422273F5B2F00A69D6A /* MovieDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsView.swift; sourceTree = "<group>"; };
 		04CDC427273F5F1400A69D6A /* BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
 		04CDC42F273F61D600A69D6A /* BlankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlankView.swift; sourceTree = "<group>"; };
+		BF0BECDA273FBE5D00EC7BC4 /* MovieDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailView.swift; sourceTree = "<group>"; };
+		BF0BECDD273FC9DF00EC7BC4 /* movie_db.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = movie_db.json; sourceTree = "<group>"; };
+		BF0BECDF273FCCE200EC7BC4 /* MovieModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModelData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF0BECE3273FD94600EC7BC4 /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,6 +200,7 @@
 		0488FD75273E641900E73C66 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				BF0BECDC273FC9C100EC7BC4 /* Resources */,
 				0488FD76273E641900E73C66 /* Models */,
 				0488FD78273E641900E73C66 /* Views */,
 			);
@@ -202,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				0488FD77273E641900E73C66 /* MovieModel.swift */,
+				BF0BECDF273FCCE200EC7BC4 /* MovieModelData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -214,6 +224,7 @@
 				0488FD7B273E641900E73C66 /* SearchBarView.swift */,
 				0488FD7C273E641900E73C66 /* NoDataView.swift */,
 				04CDC422273F5B2F00A69D6A /* MovieDetailsView.swift */,
+				BF0BECDA273FBE5D00EC7BC4 /* MovieDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -260,6 +271,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		BF0BECDC273FC9C100EC7BC4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BF0BECDD273FC9DF00EC7BC4 /* movie_db.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -276,6 +295,9 @@
 			dependencies = (
 			);
 			name = RKMovieDBUI;
+			packageProductDependencies = (
+				BF0BECE2273FD94600EC7BC4 /* SDWebImageSwiftUI */,
+			);
 			productName = RKMovieDBUI;
 			productReference = 0488FD3B273E62D300E73C66 /* RKMovieDBUI.app */;
 			productType = "com.apple.product-type.application";
@@ -347,6 +369,9 @@
 				Base,
 			);
 			mainGroup = 0488FD32273E62D300E73C66;
+			packageReferences = (
+				BF0BECE1273FD94600EC7BC4 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			productRefGroup = 0488FD3C273E62D300E73C66 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -365,6 +390,7 @@
 			files = (
 				0488FD46273E62DF00E73C66 /* Preview Assets.xcassets in Resources */,
 				0488FD43273E62DF00E73C66 /* Assets.xcassets in Resources */,
+				BF0BECDE273FC9DF00EC7BC4 /* movie_db.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,10 +425,12 @@
 				0488FD8C273E641900E73C66 /* Color+Ext.swift in Sources */,
 				0488FD41273E62D300E73C66 /* ContentView.swift in Sources */,
 				04CDC423273F5B3000A69D6A /* MovieDetailsView.swift in Sources */,
+				BF0BECE0273FCCE200EC7BC4 /* MovieModelData.swift in Sources */,
 				0488FD8A273E641900E73C66 /* NoDataView.swift in Sources */,
 				0488FD3F273E62D300E73C66 /* RKMovieDBUIApp.swift in Sources */,
 				0488FD88273E641900E73C66 /* HomeListView.swift in Sources */,
 				04CDC430273F61D600A69D6A /* BlankView.swift in Sources */,
+				BF0BECDB273FBE5D00EC7BC4 /* MovieDetailView.swift in Sources */,
 				0488FD85273E641900E73C66 /* SearchListView.swift in Sources */,
 				0488FD87273E641900E73C66 /* MovieCardsView.swift in Sources */,
 			);
@@ -718,6 +746,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BF0BECE1273FD94600EC7BC4 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BF0BECE2273FD94600EC7BC4 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF0BECE1273FD94600EC7BC4 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		0488FD49273E62DF00E73C66 /* RKMovieDBUI.xcdatamodeld */ = {
