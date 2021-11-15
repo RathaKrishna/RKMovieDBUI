@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0401335027424867006F9674 /* RemoteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401334F27424867006F9674 /* RemoteImage.swift */; };
 		0488FD3F273E62D300E73C66 /* RKMovieDBUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488FD3E273E62D300E73C66 /* RKMovieDBUIApp.swift */; };
 		0488FD41273E62D300E73C66 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488FD40273E62D300E73C66 /* ContentView.swift */; };
 		0488FD43273E62DF00E73C66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0488FD42273E62DF00E73C66 /* Assets.xcassets */; };
@@ -50,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0401334F27424867006F9674 /* RemoteImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteImage.swift; sourceTree = "<group>"; };
 		0488FD3B273E62D300E73C66 /* RKMovieDBUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RKMovieDBUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0488FD3E273E62D300E73C66 /* RKMovieDBUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKMovieDBUIApp.swift; sourceTree = "<group>"; };
 		0488FD40273E62D300E73C66 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 		0488FD7D273E641900E73C66 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				0401334F27424867006F9674 /* RemoteImage.swift */,
 				04CDC427273F5F1400A69D6A /* BottomSheet.swift */,
 				04CDC42F273F61D600A69D6A /* BlankView.swift */,
 			);
@@ -405,6 +408,7 @@
 				0488FD8C273E641900E73C66 /* Color+Ext.swift in Sources */,
 				0488FD41273E62D300E73C66 /* ContentView.swift in Sources */,
 				04CDC423273F5B3000A69D6A /* MovieDetailsView.swift in Sources */,
+				0401335027424867006F9674 /* RemoteImage.swift in Sources */,
 				BF0BECE0273FCCE200EC7BC4 /* MovieModelData.swift in Sources */,
 				0488FD8A273E641900E73C66 /* NoDataView.swift in Sources */,
 				0488FD3F273E62D300E73C66 /* RKMovieDBUIApp.swift in Sources */,
