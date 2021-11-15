@@ -250,17 +250,9 @@
 		0488FD81273E641900E73C66 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				0488FD82273E641900E73C66 /* Models */,
 				0488FD83273E641900E73C66 /* Views */,
 			);
 			path = Main;
-			sourceTree = "<group>";
-		};
-		0488FD82273E641900E73C66 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		0488FD83273E641900E73C66 /* Views */ = {
