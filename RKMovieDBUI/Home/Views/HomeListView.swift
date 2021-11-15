@@ -49,7 +49,7 @@ struct HomeListView: View {
                                 CategoryView(movieType: $movieType)
                                     .padding(.leading, 20)
                                     .padding(.vertical, 10)
-                                NowShowing(movieType: self.movieType)
+                                NowShowing(showDetails: $showDetails, movieType: self.movieType, selectedSeries: $selectedSeries)
                                     .padding(.leading, 20)
                                     .padding(.vertical, 10)
                                 TrendingView(gridLayout: gridLayout, moviesList: trendingMovie.movies)
@@ -195,8 +195,10 @@ struct CategoryView: View {
 //Example view for load data from local model data
 struct NowShowing: View {
     
-    var movieType: MoviesType
+    @Binding var showDetails: Bool
     
+    var movieType: MoviesType
+    @Binding var selectedSeries: Series
     var body: some View {
         VStack(alignment: .leading) {
             Text("Now Showing")
@@ -205,10 +207,14 @@ struct NowShowing: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
                     ForEach(movieType == MoviesType.all ? seriesList :  seriesList.filter { $0.type == movieType}) { series in
-                        NavigationLink(destination:MovieDetailsView(isShow: .constant(false), seriesModel: series)) {
+                       
                             MovieCardsView(imageName: series.image, title: series.title, ratings: series.ratings)
                                 .frame(width: 200, height: 300)
-                        }
+                                .onTapGesture {
+                                    self.selectedSeries = series
+                                    self.showDetails = true
+                                }
+                        
                             
                     }
                     

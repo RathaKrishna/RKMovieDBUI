@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 //sample view for using Bottom sheet
 
@@ -20,11 +21,12 @@ struct MovieDetailsView: View {
                     
                     ZStack {
                         VStack(alignment: .leading, spacing: 5) {
-                            Image("movie_1")
+                            WebImage(url: URL(string: seriesModel.image ))
+                                .placeholder(Image("no_movie"))
                                 .resizable()
-                                .scaledToFill()
-                                .frame(height: 200)
-                                .padding(.bottom, 20)
+                                .aspectRatio(1, contentMode: .fill)
+                                .frame(height: 300)
+                                .padding(.bottom, 30)
                             
                             VStack(alignment: .leading, spacing: 5) {
                                 Text(seriesModel.title)
@@ -47,12 +49,12 @@ struct MovieDetailsView: View {
                                 }
                             }
                             }
-                            .padding(.bottom, 30)
+                            .padding(.bottom, 20)
                             Text("Description")
                                 .font(.system(.headline, design: .rounded))
                                 .fontWeight(.medium)
-                            Text("Growing up in Michigan, I was lucky enough to experi ence one part of the Great Lakes. And let me assure you, they are great. As a phot ojournalist, I have had endless opportunities to travel the world and to see a var iety of lakes as well as each of the major oceans. And let me tell you, you will b e hard pressed to find water as beautiful as the Great Lakes.")
-                                .padding(.bottom, 40)
+                            Text("The Cotton Club was a famous night club in Harlem. The story follows the people that visited the club, those that ran it, and is peppered with the Jazz music that made it so famous. The Cotton Club was a famous night club in Harlem. The story follows the people that visited the club, those that ran it, and is peppered with the Jazz music that made it so famous.")
+                                .padding(.bottom, 20)
                             
                             Button(action: {}) {
                                 Text("Book Now")
@@ -66,7 +68,7 @@ struct MovieDetailsView: View {
                                     
                             }
                         }
-                        .padding()
+                        .padding(.all, 10)
                         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0,  maxHeight: .infinity)
                         .background(Color(.systemBackground))
                         .cornerRadius(15)
@@ -77,7 +79,7 @@ struct MovieDetailsView: View {
                             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0,  maxHeight: .infinity, alignment: .topTrailing)
                             .offset(x: -15, y: -5)
                     }
-                    .offset(y: 15)
+                    .offset(y: 0)
                 }
             
         }
