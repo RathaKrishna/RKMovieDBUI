@@ -26,7 +26,7 @@ struct TabBarView: View {
                         }
                         .tag(0)
                     
-                    SearchListView()
+                    SettingsView()
                         .tabItem {
                             Image(systemName: self.selectedTab == 1 ? "gearshape.fill" : "gearshape")
                             Text("Settings")

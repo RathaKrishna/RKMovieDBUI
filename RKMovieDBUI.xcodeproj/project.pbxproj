@@ -15,7 +15,7 @@
 		0488FD4B273E62DF00E73C66 /* RKMovieDBUI.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0488FD49273E62DF00E73C66 /* RKMovieDBUI.xcdatamodeld */; };
 		0488FD56273E62E000E73C66 /* RKMovieDBUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488FD55273E62E000E73C66 /* RKMovieDBUITests.swift */; };
 		0488FD61273E62E000E73C66 /* RKMovieDBUIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488FD60273E62E000E73C66 /* RKMovieDBUIUITests.swift */; };
-		0488FD85273E641900E73C66 /* SearchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488FD74273E641900E73C66 /* SearchListView.swift */; };
+		0488FD85273E641900E73C66 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488FD74273E641900E73C66 /* SettingsView.swift */; };
 		0488FD86273E641900E73C66 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488FD77273E641900E73C66 /* MovieModel.swift */; };
 		0488FD87273E641900E73C66 /* MovieCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488FD79273E641900E73C66 /* MovieCardsView.swift */; };
 		0488FD88273E641900E73C66 /* HomeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488FD7A273E641900E73C66 /* HomeListView.swift */; };
@@ -64,7 +64,7 @@
 		0488FD5C273E62E000E73C66 /* RKMovieDBUIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RKMovieDBUIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0488FD60273E62E000E73C66 /* RKMovieDBUIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKMovieDBUIUITests.swift; sourceTree = "<group>"; };
 		0488FD62273E62E000E73C66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0488FD74273E641900E73C66 /* SearchListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchListView.swift; sourceTree = "<group>"; };
+		0488FD74273E641900E73C66 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		0488FD77273E641900E73C66 /* MovieModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 		0488FD79273E641900E73C66 /* MovieCardsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCardsView.swift; sourceTree = "<group>"; };
 		0488FD7A273E641900E73C66 /* HomeListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeListView.swift; sourceTree = "<group>"; };
@@ -133,7 +133,7 @@
 				0488FD75273E641900E73C66 /* Home */,
 				0488FD81273E641900E73C66 /* Main */,
 				0488FD7D273E641900E73C66 /* Others */,
-				0488FD71273E641900E73C66 /* Search */,
+				0488FD71273E641900E73C66 /* Settings */,
 				0488FD3E273E62D300E73C66 /* RKMovieDBUIApp.swift */,
 				0488FD40273E62D300E73C66 /* ContentView.swift */,
 				0488FD42273E62DF00E73C66 /* Assets.xcassets */,
@@ -171,26 +171,18 @@
 			path = RKMovieDBUIUITests;
 			sourceTree = "<group>";
 		};
-		0488FD71273E641900E73C66 /* Search */ = {
+		0488FD71273E641900E73C66 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				0488FD72273E641900E73C66 /* Models */,
 				0488FD73273E641900E73C66 /* Views */,
 			);
-			path = Search;
-			sourceTree = "<group>";
-		};
-		0488FD72273E641900E73C66 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		0488FD73273E641900E73C66 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0488FD74273E641900E73C66 /* SearchListView.swift */,
+				0488FD74273E641900E73C66 /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -419,7 +411,7 @@
 				0488FD88273E641900E73C66 /* HomeListView.swift in Sources */,
 				04CDC430273F61D600A69D6A /* BlankView.swift in Sources */,
 				BF0BECDB273FBE5D00EC7BC4 /* MovieDetailView.swift in Sources */,
-				0488FD85273E641900E73C66 /* SearchListView.swift in Sources */,
+				0488FD85273E641900E73C66 /* SettingsView.swift in Sources */,
 				0488FD87273E641900E73C66 /* MovieCardsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

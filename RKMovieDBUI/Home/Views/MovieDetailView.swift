@@ -39,17 +39,20 @@ struct MovieDetailView: View {
                         ScrollView(.horizontal, showsIndicators: false, content: {
                             HStack(spacing: 10) {
                                 ForEach(getCasts(str: series.actors), id: \.self) { cast in
-                                    VStack {
+                                    VStack(alignment: .center) {
                                         Image("avatar_img")
                                             .resizable()
                                             .scaledToFit()
-                                            .frame(width: 80, height: 80, alignment: .center)
-                                            .cornerRadius(40.0)
+                                            .frame(width: 90, height: 90, alignment: .center)
+                                            .cornerRadius(45.0)
+                                        
                                         Spacer()
                                             
                                         Text(cast)
                                             .font(.body)
-                                            .frame(width: 100, alignment: .center)
+                                            .multilineTextAlignment(.center)
+                                            .frame(width: 110)
+                                        Spacer()
                                             
                                         
                                         
@@ -102,7 +105,6 @@ struct MovieDetailView: View {
     
     func getCasts(str: String) -> Array<String> {
         let array = str.components(separatedBy: ",")
-        var name: Int = 0
         return array
     }
 }
@@ -167,6 +169,7 @@ struct DetailsHeaderImageView: View {
                             Image(systemName: "star.fill")
                                 .foregroundColor(.yellow)
                                 .font(.system(size: 22))
+                            
                             Text("4.9")
                                 .font(.system(.title3, design: .rounded))
                                 .foregroundColor(.white)

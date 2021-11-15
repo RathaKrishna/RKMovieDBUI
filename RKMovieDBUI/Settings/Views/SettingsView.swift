@@ -1,5 +1,5 @@
 //
-//  SearchListView.swift
+//  SettingsView.swift
 //  RkMovieUI
 //
 //  Created by Rathakrishnan on 11/11/21.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SearchListView: View {
+struct SettingsView: View {
     
     @State private var isNavigationBarHidden = false
     
@@ -23,8 +23,8 @@ struct SearchListView: View {
     }
 }
 
-struct SearchListView_Previews: PreviewProvider {
+struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchListView()
+        SettingsView()
     }
 }
