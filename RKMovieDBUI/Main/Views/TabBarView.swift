@@ -11,6 +11,10 @@ struct TabBarView: View {
     
     @State private var selectedTab = 0
     
+    init() {
+        UITabBar.appearance().backgroundColor = .white
+        UITabBar.appearance().isOpaque = false
+    }
     var body: some View {
         NavigationView {
                
@@ -24,13 +28,14 @@ struct TabBarView: View {
                     
                     SearchListView()
                         .tabItem {
-                            Image(systemName: self.selectedTab == 1 ? "magnifyingglass.circle.fill" : "magnifyingglass.circle")
-                            Text("Search")
+                            Image(systemName: self.selectedTab == 1 ? "gearshape.fill" : "gearshape")
+                            Text("Settings")
                         }
                         .tag(1)
                 }
                
                 .accentColor(.red)
+                
   
         }
     }

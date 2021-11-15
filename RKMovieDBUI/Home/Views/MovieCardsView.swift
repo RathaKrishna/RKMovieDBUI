@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct MovieCardsView: View {
     
@@ -18,7 +19,9 @@ struct MovieCardsView: View {
         ZStack {
             GeometryReader { geometry in
                 
-                RemoteImage(url: self.imageName)
+                WebImage(url: URL(string: self.imageName))
+                    .resizable()
+                    .placeholder(Image("no_movie"))
                     .scaledToFill()
                     .frame(width: geometry.size.width, height: geometry.size.height)
                     .cornerRadius(15)

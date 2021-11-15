@@ -15,8 +15,11 @@ struct HomeListView: View {
     @State private var isHaveData = true
     @State private var searchText = ""
     @State private var movieType: MoviesType = .all
+    
+    //LazyVGrid layout
     @State private var gridLayout: [GridItem] = [GridItem(.flexible()), GridItem(.flexible())]
     @State private var gridLayoutCount = 2
+    
     @State private var showDetails = false
     @State private var selectedSeries = seriesList[0]
     
@@ -97,6 +100,7 @@ struct HomeListView: View {
     }
 }
 
+//Navigation bar
 struct TopBarView: View {
     
     var body: some View {
@@ -148,7 +152,7 @@ struct AvatarView: View {
     }
 }
 
-//Movies category view
+//Movies category view , Load from sample model data
 struct CategoryView: View {
     
     @Binding var movieType: MoviesType
@@ -188,7 +192,7 @@ struct CategoryView: View {
     }
 }
 
-//now showing view
+//Example view for load data from local model data
 struct NowShowing: View {
     
     var movieType: MoviesType
@@ -216,8 +220,7 @@ struct NowShowing: View {
     }
 }
 
-//Movies list
-
+//Example view for load data from local Json file
 struct TrendingView: View {
     
     var gridLayout: [GridItem]

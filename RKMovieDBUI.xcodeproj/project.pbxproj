@@ -21,7 +21,6 @@
 		0488FD88273E641900E73C66 /* HomeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488FD7A273E641900E73C66 /* HomeListView.swift */; };
 		0488FD89273E641900E73C66 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488FD7B273E641900E73C66 /* SearchBarView.swift */; };
 		0488FD8A273E641900E73C66 /* NoDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488FD7C273E641900E73C66 /* NoDataView.swift */; };
-		0488FD8B273E641900E73C66 /* RemoteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488FD7F273E641900E73C66 /* RemoteImage.swift */; };
 		0488FD8C273E641900E73C66 /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488FD80273E641900E73C66 /* Color+Ext.swift */; };
 		0488FD8D273E641900E73C66 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488FD84273E641900E73C66 /* TabBarView.swift */; };
 		04CDC423273F5B3000A69D6A /* MovieDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDC422273F5B2F00A69D6A /* MovieDetailsView.swift */; };
@@ -71,7 +70,6 @@
 		0488FD7A273E641900E73C66 /* HomeListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeListView.swift; sourceTree = "<group>"; };
 		0488FD7B273E641900E73C66 /* SearchBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		0488FD7C273E641900E73C66 /* NoDataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoDataView.swift; sourceTree = "<group>"; };
-		0488FD7F273E641900E73C66 /* RemoteImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteImage.swift; sourceTree = "<group>"; };
 		0488FD80273E641900E73C66 /* Color+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
 		0488FD84273E641900E73C66 /* TabBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		04CDC422273F5B2F00A69D6A /* MovieDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsView.swift; sourceTree = "<group>"; };
@@ -232,7 +230,6 @@
 		0488FD7D273E641900E73C66 /* Others */ = {
 			isa = PBXGroup;
 			children = (
-				0488FD7F273E641900E73C66 /* RemoteImage.swift */,
 				04CDC427273F5F1400A69D6A /* BottomSheet.swift */,
 				04CDC42F273F61D600A69D6A /* BlankView.swift */,
 			);
@@ -413,7 +410,6 @@
 				0488FD8D273E641900E73C66 /* TabBarView.swift in Sources */,
 				0488FD48273E62DF00E73C66 /* Persistence.swift in Sources */,
 				0488FD4B273E62DF00E73C66 /* RKMovieDBUI.xcdatamodeld in Sources */,
-				0488FD8B273E641900E73C66 /* RemoteImage.swift in Sources */,
 				0488FD8C273E641900E73C66 /* Color+Ext.swift in Sources */,
 				0488FD41273E62D300E73C66 /* ContentView.swift in Sources */,
 				04CDC423273F5B3000A69D6A /* MovieDetailsView.swift in Sources */,

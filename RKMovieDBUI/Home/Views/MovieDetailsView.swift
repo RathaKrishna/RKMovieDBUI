@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+//sample view for using Bottom sheet
+
 struct MovieDetailsView: View {
     @Binding var isShow: Bool
     

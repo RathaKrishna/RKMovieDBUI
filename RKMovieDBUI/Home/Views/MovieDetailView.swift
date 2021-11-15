@@ -50,6 +50,7 @@ struct MovieDetailView: View {
                                         Text(cast)
                                             .font(.body)
                                             .frame(width: 100, alignment: .center)
+                                            
                                         
                                         
 
