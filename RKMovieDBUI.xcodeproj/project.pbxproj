@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0401335827424E8A006F9674 /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401335727424E8A006F9674 /* BottomSheet.swift */; };
+		0478EE912743A176001BA14E /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0478EE902743A176001BA14E /* ModelData.swift */; };
 		0488FD3F273E62D300E73C66 /* RKMovieDBUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488FD3E273E62D300E73C66 /* RKMovieDBUIApp.swift */; };
 		0488FD41273E62D300E73C66 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488FD40273E62D300E73C66 /* ContentView.swift */; };
 		0488FD43273E62DF00E73C66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0488FD42273E62DF00E73C66 /* Assets.xcassets */; };
@@ -28,7 +29,6 @@
 		04CDC430273F61D600A69D6A /* BlankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDC42F273F61D600A69D6A /* BlankView.swift */; };
 		BF0BECDB273FBE5D00EC7BC4 /* MovieDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0BECDA273FBE5D00EC7BC4 /* MovieDetailView.swift */; };
 		BF0BECDE273FC9DF00EC7BC4 /* movie_db.json in Resources */ = {isa = PBXBuildFile; fileRef = BF0BECDD273FC9DF00EC7BC4 /* movie_db.json */; };
-		BF0BECE0273FCCE200EC7BC4 /* MovieModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0BECDF273FCCE200EC7BC4 /* MovieModelData.swift */; };
 		BF0BECE3273FD94600EC7BC4 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = BF0BECE2273FD94600EC7BC4 /* SDWebImageSwiftUI */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		0401335727424E8A006F9674 /* BottomSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
+		0478EE902743A176001BA14E /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		0488FD3B273E62D300E73C66 /* RKMovieDBUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RKMovieDBUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0488FD3E273E62D300E73C66 /* RKMovieDBUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKMovieDBUIApp.swift; sourceTree = "<group>"; };
 		0488FD40273E62D300E73C66 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -77,7 +78,6 @@
 		04CDC42F273F61D600A69D6A /* BlankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlankView.swift; sourceTree = "<group>"; };
 		BF0BECDA273FBE5D00EC7BC4 /* MovieDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailView.swift; sourceTree = "<group>"; };
 		BF0BECDD273FC9DF00EC7BC4 /* movie_db.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = movie_db.json; sourceTree = "<group>"; };
-		BF0BECDF273FCCE200EC7BC4 /* MovieModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModelData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,7 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				0488FD77273E641900E73C66 /* MovieModel.swift */,
-				BF0BECDF273FCCE200EC7BC4 /* MovieModelData.swift */,
+				0478EE902743A176001BA14E /* ModelData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -404,9 +404,9 @@
 				0488FD8C273E641900E73C66 /* Color+Ext.swift in Sources */,
 				0488FD41273E62D300E73C66 /* ContentView.swift in Sources */,
 				04CDC423273F5B3000A69D6A /* MovieDetailsView.swift in Sources */,
-				BF0BECE0273FCCE200EC7BC4 /* MovieModelData.swift in Sources */,
 				0401335827424E8A006F9674 /* BottomSheet.swift in Sources */,
 				0488FD8A273E641900E73C66 /* NoDataView.swift in Sources */,
+				0478EE912743A176001BA14E /* ModelData.swift in Sources */,
 				0488FD3F273E62D300E73C66 /* RKMovieDBUIApp.swift in Sources */,
 				0488FD88273E641900E73C66 /* HomeListView.swift in Sources */,
 				04CDC430273F61D600A69D6A /* BlankView.swift in Sources */,

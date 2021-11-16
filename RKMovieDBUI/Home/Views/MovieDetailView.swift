@@ -12,7 +12,7 @@ struct MovieDetailView: View {
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
-    var series: MovieData.Movies
+    var series: MovieData.Movie
 
     var body: some View {
         ZStack {
@@ -81,7 +81,7 @@ struct MovieDetailView: View {
                             .padding()
                     }
                     .frame(minWidth: 0, maxWidth: .infinity)
-                    .background(Color.red)
+                    .background(Color.btnBgColor)
                     .cornerRadius(10.0)
                     .padding(.all, 20)
                     Spacer()
@@ -114,13 +114,14 @@ struct MovieDetailView_Previews: PreviewProvider {
     
     
     static var previews: some View {
-        MovieDetailView(series: MovieData.Movies.init(id: 0, title: "The Cotton Club", year: "1984", runtime: "67", genres: ["drama", "Adventure"], director: "Francis Ford Coppola", actors: "Richard Gere, Gregory Hines, Diane Lane, Lonette McKee", plot: "The Cotton Club was a famous night club in Harlem. The story follows the people that visited the club, those that ran it, and is peppered with the Jazz music that made it so famous.", posterUrl: "https://images-na.ssl-images-amazon.com/images/M/MV5BMTU5ODAyNzA4OV5BMl5BanBnXkFtZTcwNzYwNTIzNA@@._V1_SX300.jpg"))
+        MovieDetailView(series: MovieData.Movie.init(id: 0, title: "The Cotton Club", year: "1984", runtime: "67", genres: ["drama", "Adventure"], director: "Francis Ford Coppola", actors: "Richard Gere, Gregory Hines, Diane Lane, Lonette McKee", plot: "The Cotton Club was a famous night club in Harlem. The story follows the people that visited the club, those that ran it, and is peppered with the Jazz music that made it so famous.", posterUrl: "https://images-na.ssl-images-amazon.com/images/M/MV5BMTU5ODAyNzA4OV5BMl5BanBnXkFtZTcwNzYwNTIzNA@@._V1_SX300.jpg", isFavorite: false))
+            
     }
 }
 
 struct DetailsHeaderImageView: View {
     
-    var series: MovieData.Movies
+    var series: MovieData.Movie
     
     private let gradient = Gradient(colors: [Color(red: 251/255, green: 255/255, blue: 255/255, opacity: 0.5),Color(red: 251/255, green: 255/255, blue: 255/255, opacity: 0.3),  .clear])
     

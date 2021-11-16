@@ -9,8 +9,12 @@ import SwiftUI
 
 struct TabBarView: View {
     
-    @State private var selectedTab = 0
+    @State private var selectedTab: Tab = .home
     
+    enum Tab {
+        case home
+        case setting
+    }
     init() {
         UITabBar.appearance().backgroundColor = .white
         UITabBar.appearance().isOpaque = false
@@ -21,20 +25,20 @@ struct TabBarView: View {
                 TabView(selection: $selectedTab) {
                     HomeListView()
                         .tabItem {
-                            Image(systemName: self.selectedTab == 0 ? "house.fill" : "house")
+                            Image(systemName: self.selectedTab == .home ? "house.fill" : "house")
                             Text("Home")
                         }
-                        .tag(0)
+                        .tag(Tab.home)
                     
                     SettingsView()
                         .tabItem {
-                            Image(systemName: self.selectedTab == 1 ? "gearshape.fill" : "gearshape")
+                            Image(systemName: self.selectedTab == .setting ? "gearshape.fill" : "gearshape")
                             Text("Settings")
                         }
-                        .tag(1)
+                        .tag(Tab.setting)
                 }
                
-                .accentColor(.red)
+                .accentColor(.primaryColor)
                 
   
         }
@@ -45,5 +49,6 @@ struct TabBarView: View {
 struct TabBarView_Previews: PreviewProvider {
     static var previews: some View {
         TabBarView()
+            .preferredColorScheme(.light)
     }
 }

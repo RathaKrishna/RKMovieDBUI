@@ -31,7 +31,7 @@ struct SearchBarView: View {
                 .overlay(
                     HStack {
                         Image(systemName: "magnifyingglass")
-                            .foregroundColor(.black)
+                            .foregroundColor(Color("icon_bg_color"))
                             .frame(width: 25, height: 25)
                             .padding(.leading, 10)
                         TextField("Search for Movies", text: searchText)
@@ -48,7 +48,7 @@ struct SearchBarView: View {
                                 self.isEditing = false
                             }) {
                                 Image(systemName: "multiply.circle.fill")
-                                    .foregroundColor(.black)
+                                    .foregroundColor(Color("icon_bg_color"))
                                     .frame(width: 25, height: 25)
                                     .padding(.trailing, 10)
                                     
@@ -57,7 +57,6 @@ struct SearchBarView: View {
                         else
                         {
                             Image("ic_filter")
-                                .foregroundColor(.black)
                                 .frame(width: 22, height: 25)
                                 .padding(.trailing, 15)
                                 .onTapGesture {
@@ -81,5 +80,6 @@ struct SearchBarView: View {
 struct SearchBarView_Previews: PreviewProvider {
     static var previews: some View {
         SearchBarView(text: .constant(""), gridLayouCount: .constant(2))
+            .preferredColorScheme(.dark)
     }
 }

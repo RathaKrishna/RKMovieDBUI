@@ -11,6 +11,8 @@ import CoreData
 
 struct HomeListView: View {
     
+    @EnvironmentObject var modelData: ModelData
+    
     @State private var isNavigationBarHidden = true
     @State private var isHaveData = true
     @State private var searchText = ""
@@ -22,9 +24,7 @@ struct HomeListView: View {
     
     @State private var showDetails = false
     @State private var selectedSeries = seriesList[0]
-    
-    var trendingMovie: MovieData = load("movie_db.json")
-    
+        
     var body: some View {
         ZStack {
             GeometryReader { geometry in
@@ -52,7 +52,7 @@ struct HomeListView: View {
                                 NowShowing(showDetails: $showDetails, movieType: self.movieType, selectedSeries: $selectedSeries)
                                     .padding(.leading, 20)
                                     .padding(.vertical, 10)
-                                TrendingView(gridLayout: gridLayout, moviesList: trendingMovie.movies)
+                                TrendingView(gridLayout: gridLayout, moviesList: modelData.movies)
                                     .padding(.vertical, 10)
                                     .padding(.horizontal, 10)
                             }
@@ -92,10 +92,9 @@ struct HomeListView: View {
                     .animation(.easeOut(duration: 0.2))
                 
             }
+            
         }
-        .onAppear {
-            print("check array \(trendingMovie)")
-        }
+        
         
     }
 }
@@ -180,7 +179,7 @@ struct CategoryView: View {
                                 .padding(.horizontal, 20)
                                 
                         }
-                        .background( self.movieType == catogry.type ? Color(.red) : Color(.black))
+                        .background( self.movieType == catogry.type ? Color.btnBgColor : Color.btnBlack)
                         .cornerRadius(15.0)
                           
                     }
@@ -214,11 +213,8 @@ struct NowShowing: View {
                                     self.selectedSeries = series
                                     self.showDetails = true
                                 }
-                        
-                            
+
                     }
-                    
-                    
                 }
             }
             
@@ -230,7 +226,7 @@ struct NowShowing: View {
 struct TrendingView: View {
     
     var gridLayout: [GridItem]
-    var moviesList: [MovieData.Movies]
+    var moviesList: [MovieData.Movie]
     
     var body: some View {
         VStack(alignment: .leading) {

@@ -24,9 +24,13 @@ struct MovieDetailsView: View {
                             WebImage(url: URL(string: seriesModel.image ))
                                 .placeholder(Image("no_movie"))
                                 .resizable()
-                                .aspectRatio(1, contentMode: .fill)
+                                .aspectRatio(1.1, contentMode: .fill)
+                                .frame(minWidth: 0, maxWidth: .infinity)
                                 .frame(height: 300)
-                                .padding(.bottom, 30)
+                                .offset(y: -10)
+                                
+                                .padding(.bottom, 25)
+
                             
                             VStack(alignment: .leading, spacing: 5) {
                                 Text(seriesModel.title)
@@ -63,7 +67,7 @@ struct MovieDetailsView: View {
                                     .foregroundColor(.white)
                                     .padding()
                                     .frame(minWidth: 0 , maxWidth: .infinity)
-                                    .background(Color(red: 0.97, green: 0.369, blue: 0.212))
+                                    .background(Color.btnBgColor)
                                     .cornerRadius(20)
                                     
                             }
@@ -75,7 +79,7 @@ struct MovieDetailsView: View {
                         
                         Image(systemName: "bookmark.fill")
                             .font(.system(size: 48))
-                            .foregroundColor(Color(red: 0.97, green: 0.369, blue: 0.212))
+                            .foregroundColor(.btnBgColor)
                             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0,  maxHeight: .infinity, alignment: .topTrailing)
                             .offset(x: -15, y: -5)
                     }
