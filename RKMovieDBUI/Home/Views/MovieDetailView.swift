@@ -10,10 +10,19 @@ import SDWebImageSwiftUI
 
 struct MovieDetailView: View {
     
+    @EnvironmentObject var modelData: ModelData
+    
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     var series: MovieData.Movie
 
+    var movieIndex: Int {
+        modelData.movieData.movies.firstIndex(where: {$0.id == series.id})!
+    }
+    
+    
+    @State private var isFavo = false
+    
     var body: some View {
         ZStack {
             ScrollView {
@@ -53,14 +62,7 @@ struct MovieDetailView: View {
                                             .multilineTextAlignment(.center)
                                             .frame(width: 110)
                                         Spacer()
-                                            
-                                        
-                                        
-
-                                            
-                                        
-                                            
-                                           
+      
                                     }
                                     
                                     
@@ -71,19 +73,20 @@ struct MovieDetailView: View {
                     }
                     .padding()
                     
-                    Button(action: {
-                        
-                    }) {
+                    Button(action: {}, label: {
                         Text("Reserve Seat")
                             .font(.system(.title, design: .rounded))
                             .foregroundColor(.white)
                             .fontWeight(.bold)
                             .padding()
-                    }
-                    .frame(minWidth: 0, maxWidth: .infinity)
-                    .background(Color.btnBgColor)
-                    .cornerRadius(10.0)
-                    .padding(.all, 20)
+                            .frame(minWidth: 0, maxWidth: .infinity)
+
+                    })
+                    .buttonStyle(GradientButtonStyle())
+                    .padding()
+
+                    
+                    
                     Spacer()
                 }
                
@@ -91,14 +94,25 @@ struct MovieDetailView: View {
             .ignoresSafeArea( edges: .top)
             .navigationBarHidden(true)
             
-            Image(systemName: "chevron.backward.circle.fill")
-                .font(.system(size: 44))
-                .foregroundColor(.white)
-                .frame(minWidth: 0,  maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
-                .padding()
-                .onTapGesture {
-                    mode.wrappedValue.dismiss()
+            HStack{
+                Image(systemName: "chevron.backward.circle.fill")
+                    .font(.system(size: 44))
+                    .foregroundColor(.white)
+                    
+                    .padding()
+                    .onTapGesture {
+                        mode.wrappedValue.dismiss()
                 }
+                
+                Spacer()
+                
+                FavoriteButton(isSet: $modelData.movieData.movies[movieIndex].isFavorite)
+                    .font(.system(size: 38))
+                    .padding()
+                
+
+            }
+            .frame(minWidth: 0,  maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
         }
         
     }
@@ -114,7 +128,9 @@ struct MovieDetailView_Previews: PreviewProvider {
     
     
     static var previews: some View {
-        MovieDetailView(series: MovieData.Movie.init(id: 0, title: "The Cotton Club", year: "1984", runtime: "67", genres: ["drama", "Adventure"], director: "Francis Ford Coppola", actors: "Richard Gere, Gregory Hines, Diane Lane, Lonette McKee", plot: "The Cotton Club was a famous night club in Harlem. The story follows the people that visited the club, those that ran it, and is peppered with the Jazz music that made it so famous.", posterUrl: "https://images-na.ssl-images-amazon.com/images/M/MV5BMTU5ODAyNzA4OV5BMl5BanBnXkFtZTcwNzYwNTIzNA@@._V1_SX300.jpg", isFavorite: false))
+        MovieDetailView(series: ModelData().movieData.movies[1])
+            .environmentObject(ModelData())
+            
             
     }
 }
@@ -191,6 +207,20 @@ struct DetailsHeaderImageView: View {
 }
 
 
+struct FavoriteButton: View {
+    @Binding var isSet: Bool
+    
+    var body: some View {
+        Button(action: { self.isSet.toggle()}) {
+            Image(systemName: isSet ? "heart.fill" : "heart")
+                .foregroundColor(isSet ? .btnBgColor : .white)
+                
+        }
+        .buttonStyle(FavoriteButtonStyle())
+        .animation(Animation.interactiveSpring())
+    }
+}
+
 extension Double {
   func asString(style: DateComponentsFormatter.UnitsStyle) -> String {
     let formatter = DateComponentsFormatter()
@@ -199,3 +229,4 @@ extension Double {
     return formatter.string(from: self) ?? ""
   }
 }
+

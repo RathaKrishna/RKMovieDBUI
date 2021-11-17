@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0401335827424E8A006F9674 /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401335727424E8A006F9674 /* BottomSheet.swift */; };
+		04671EEF2744D25600E90479 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04671EEE2744D25600E90479 /* Styles.swift */; };
 		0478EE912743A176001BA14E /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0478EE902743A176001BA14E /* ModelData.swift */; };
 		0488FD3F273E62D300E73C66 /* RKMovieDBUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488FD3E273E62D300E73C66 /* RKMovieDBUIApp.swift */; };
 		0488FD41273E62D300E73C66 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488FD40273E62D300E73C66 /* ContentView.swift */; };
@@ -51,6 +52,7 @@
 
 /* Begin PBXFileReference section */
 		0401335727424E8A006F9674 /* BottomSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
+		04671EEE2744D25600E90479 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		0478EE902743A176001BA14E /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		0488FD3B273E62D300E73C66 /* RKMovieDBUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RKMovieDBUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0488FD3E273E62D300E73C66 /* RKMovieDBUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKMovieDBUIApp.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 			children = (
 				0401335727424E8A006F9674 /* BottomSheet.swift */,
 				04CDC42F273F61D600A69D6A /* BlankView.swift */,
+				04671EEE2744D25600E90479 /* Styles.swift */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 				0488FD41273E62D300E73C66 /* ContentView.swift in Sources */,
 				04CDC423273F5B3000A69D6A /* MovieDetailsView.swift in Sources */,
 				0401335827424E8A006F9674 /* BottomSheet.swift in Sources */,
+				04671EEF2744D25600E90479 /* Styles.swift in Sources */,
 				0488FD8A273E641900E73C66 /* NoDataView.swift in Sources */,
 				0478EE912743A176001BA14E /* ModelData.swift in Sources */,
 				0488FD3F273E62D300E73C66 /* RKMovieDBUIApp.swift in Sources */,

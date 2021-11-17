@@ -170,18 +170,19 @@ struct CategoryView: View {
                         
                         Button(action: {
                             self.movieType = catogry.type
-                        }) {
+                        }, label: {
                             Text(catogry.title)
                                 .font(.system(.title, design: .rounded))
                                 .foregroundColor(.white)
                                 .fontWeight(.regular)
                                 .padding()
                                 .padding(.horizontal, 20)
-                                
-                        }
-                        .background( self.movieType == catogry.type ? Color.btnBgColor : Color.btnBlack)
-                        .cornerRadius(15.0)
-                          
+                        })
+                        .buttonStyle(BlackButtonStyle(isSelected: movieType == catogry.type ? true : false))
+                        
+                        
+                        
+                         /*self.movieType == catogry.type ? BlackButtonStyle :*/
                     }
                 }
                 
@@ -207,7 +208,7 @@ struct NowShowing: View {
                 HStack {
                     ForEach(movieType == MoviesType.all ? seriesList :  seriesList.filter { $0.type == movieType}) { series in
                        
-                            MovieCardsView(imageName: series.image, title: series.title, ratings: series.ratings)
+                            MovieCardsView(imageName: series.image, title: series.title, ratings: series.ratings, showFavorite: false )
                                 .frame(width: 200, height: 300)
                                 .onTapGesture {
                                     self.selectedSeries = series
@@ -238,7 +239,7 @@ struct TrendingView: View {
                 ForEach(moviesList.indices, id:\.self) { index in
                     
                     NavigationLink(destination: MovieDetailView(series: moviesList[index])) {
-                        MovieCardsView(imageName: moviesList[index].posterUrl, title: moviesList[index].title, ratings: "4.5")
+                        MovieCardsView(imageName: moviesList[index].posterUrl, title: moviesList[index].title, ratings: "4.5", showFavorite: true, isFavotire: moviesList[index].isFavorite)
                             .frame(minWidth: 0, maxWidth: .infinity)
                             .frame(height: 200)
                         .animation(.interactiveSpring())
@@ -254,5 +255,6 @@ struct TrendingView: View {
 struct HomeListView_Previews: PreviewProvider {
     static var previews: some View {
         HomeListView()
+            .environmentObject(ModelData() )
     }
 }

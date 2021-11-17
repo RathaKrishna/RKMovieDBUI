@@ -13,6 +13,8 @@ struct MovieCardsView: View {
     let imageName: String
     let title: String
     let ratings: String
+    let showFavorite: Bool
+    var isFavotire: Bool?
     
     let gradient = Gradient(colors: [Color(red: 251/255, green: 255/255, blue: 255/255, opacity: 0.5),Color(red: 251/255, green: 255/255, blue: 255/255, opacity: 0.3),  .clear])
     var body: some View {
@@ -33,6 +35,16 @@ struct MovieCardsView: View {
                                     VStack {
                                         HStack(alignment: .center) {
                                             Spacer()
+                                            if showFavorite  {
+                                                if isFavotire ?? false {
+                                                    Image(systemName: "heart.fill")
+                                                        .foregroundColor(.yellow)
+                                                        .font(.system(size: 22))
+                                                }
+                                                
+                                            }
+                                            else
+                                            {
                                             Image(systemName: "star.fill")
                                                 .foregroundColor(.yellow)
                                                 .font(.system(size: 22))
@@ -40,6 +52,7 @@ struct MovieCardsView: View {
                                            Text("\(ratings)")
                                             .font(.system(size: 18, weight: .bold, design: .rounded))
                                             .foregroundColor(.white)
+                                            }
                                             
                                         }
                                         .padding()
@@ -69,6 +82,6 @@ struct MovieCardsView: View {
 
 struct MovieCardsView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieCardsView(imageName: seriesList[0].image, title: seriesList[0].title, ratings: "4.5")
+        MovieCardsView(imageName: seriesList[0].image, title: seriesList[0].title, ratings: "4.5", showFavorite: true)
     }
 }
