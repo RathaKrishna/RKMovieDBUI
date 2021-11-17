@@ -1,6 +1,6 @@
 # RKMovieDBUI
 
-Simple Movie Booking app demo UI
+Simple Movie Booking app demo UI with LazyGrids, Lists, Custom Bottom Sheet, Scrollview and other SwiftUI components. 
 
 
 
