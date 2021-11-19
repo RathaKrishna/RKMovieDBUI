@@ -14,7 +14,7 @@ struct MovieDetailView: View {
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
-    var series: MovieData.Movie
+    var series: Movie
 
     var movieIndex: Int {
         modelData.movieData.movies.firstIndex(where: {$0.id == series.id})!
@@ -137,7 +137,7 @@ struct MovieDetailView_Previews: PreviewProvider {
 
 struct DetailsHeaderImageView: View {
     
-    var series: MovieData.Movie
+    var series: Movie
     
     private let gradient = Gradient(colors: [Color(red: 251/255, green: 255/255, blue: 255/255, opacity: 0.5),Color(red: 251/255, green: 255/255, blue: 255/255, opacity: 0.3),  .clear])
     
@@ -176,7 +176,7 @@ struct DetailsHeaderImageView: View {
                             Circle()
                                 .foregroundColor(Color.white.opacity(1))
                                 .frame(width: 8, height: 8, alignment: .center)
-                            Text(calculateTime(runTime: series.runtime))
+                            Text(Helpers().calculateTime(runTime: series.runtime))
                                 .font(.system(.title3, design: .rounded))
                                 .foregroundColor(.white)
                             
@@ -198,12 +198,7 @@ struct DetailsHeaderImageView: View {
           
     }
     
-    func calculateTime(runTime: String) -> String {
-        let dRunTime = (runTime as NSString).doubleValue
-        let toSeconds = dRunTime * 60.0
-        let result = toSeconds.asString(style: .abbreviated)
-        return result
-    }
+   
 }
 
 

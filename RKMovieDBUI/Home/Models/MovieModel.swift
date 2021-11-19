@@ -11,23 +11,9 @@ import Foundation
 //Model for local json file
 struct MovieData:  Codable {
     
-    
     var genres: [String]
     var movies: [Movie]
     
-    struct Movie: Hashable, Codable {
-        
-        var id: Int
-        var title: String
-        var year: String
-        var runtime: String
-        var genres: [String]
-        var director: String
-        var actors: String
-        var plot: String
-        var posterUrl: String
-        var isFavorite: Bool
-    }
 }
 
 //models for now showing *** example for read data from local model
@@ -48,7 +34,7 @@ struct MovieCatogery: Identifiable {
     var id = UUID()
     var title: String
     var type: MoviesType
-        
+    
 }
 
 struct Series: Identifiable {
@@ -79,7 +65,7 @@ let catogries = [
 
 
 #if DEBUG
-let seriesList = [
+let nowShowingList = [
     Series(
         title: "Hello, My Name Is Doris",
         year: "2015",
@@ -122,10 +108,10 @@ let seriesList = [
         type: .romance,
         image: "https://m.media-amazon.com/images/M/MV5BOWM4ZmJhMTctZWI3NC00ODJiLWI1MGUtYjM3NTVmYzY0OTFlXkEyXkFqcGdeQXVyMTEzNzg0Mjkx._V1_.jpg",
         ratings: "4.7"),
-   
-    ]
+    
+]
 #endif
 
 
 
-    
+

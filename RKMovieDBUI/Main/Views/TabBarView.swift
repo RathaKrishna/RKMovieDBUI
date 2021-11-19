@@ -20,20 +20,19 @@ struct TabBarView: View {
         UITabBar.appearance().isOpaque = false
     }
     var body: some View {
-        NavigationView {
                
                 TabView(selection: $selectedTab) {
-                    HomeListView()
+                    HomeView()
                         .tabItem {
                             Image(systemName: self.selectedTab == .home ? "house.fill" : "house")
                             Text("Home")
                         }
                         .tag(Tab.home)
                     
-                    SettingsView()
+                    HomeListView()
                         .tabItem {
-                            Image(systemName: self.selectedTab == .setting ? "gearshape.fill" : "gearshape")
-                            Text("Settings")
+                            Image(systemName: self.selectedTab == .setting ? "film.fill" : "film")
+                            Text("Movies")
                         }
                         .tag(Tab.setting)
                 }
@@ -41,7 +40,7 @@ struct TabBarView: View {
                 .accentColor(.primaryColor)
                 
   
-        }
+        
     }
 }
 

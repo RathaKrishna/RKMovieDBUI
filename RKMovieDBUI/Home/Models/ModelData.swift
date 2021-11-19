@@ -12,7 +12,9 @@ import Combine
 final class ModelData: ObservableObject {
     
     @Published var movieData: MovieData = load("movie_db.json")
-    var movies: [MovieData.Movie] {
+   
+    
+    var movies: [Movie] {
         movieData.movies
         }
     
@@ -20,8 +22,15 @@ final class ModelData: ObservableObject {
         movieData.genres
     }
     
-    var categories: [[String]: [MovieData.Movie]] {
+    var categories: [[String]: [Movie]] {
         Dictionary( grouping: movies, by: { $0.genres})
+    }
+
+    func byGenres(genre: String) -> [Movie] {
+        if genre == "All" {
+            return movieData.movies
+        }
+       return  movieData.movies.filter { $0.genres.contains(genre) }
     }
 }
 

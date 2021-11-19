@@ -92,6 +92,6 @@ struct MovieDetailsView: View {
 
 struct MovieDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieDetailsView(isShow: .constant(false), seriesModel: seriesList[0])
+        MovieDetailsView(isShow: .constant(false), seriesModel: nowShowingList[0])
     }
 }

@@ -9,7 +9,7 @@ import SwiftUI
 import CoreData
 
 
-struct HomeListView: View {
+struct HomeView: View {
     
     @EnvironmentObject var modelData: ModelData
     
@@ -23,76 +23,78 @@ struct HomeListView: View {
     @State private var gridLayoutCount = 2
     
     @State private var showDetails = false
-    @State private var selectedSeries = seriesList[0]
+    @State private var selectedSeries = nowShowingList[0]
         
     var body: some View {
-        ZStack {
-            GeometryReader { geometry in
+        NavigationView {
+            ZStack {
+                GeometryReader { geometry in
+                    
+                    VStack {
+                        TopBarView()
+                            .padding(.all, 10)
+                            .onTapGesture {
+                                if self.gridLayoutCount == 2 {
+                                    self.gridLayoutCount = 1
+                                }  else { self.gridLayoutCount = 2 }
+                            }
+                        
+                        ScrollView{
+                            if !isHaveData {
+                                NoDataView()
+                            }
+                            else
+                            {
+                                VStack {
+                                    SearchBarView(text: $searchText, gridLayouCount: $gridLayoutCount)
+                                    CategoryView(movieType: $movieType)
+                                        .padding(.leading, 20)
+                                        .padding(.vertical, 10)
+                                    NowShowingView(showDetails: $showDetails, movieType: self.movieType, selectedSeries: $selectedSeries)
+                                        .padding(.leading, 20)
+                                        .padding(.vertical, 10)
+                                    TrendingView(gridLayout: gridLayout, modelData: modelData)
+                                        .padding(.vertical, 10)
+                                        .padding(.horizontal, 10)
+                                }
+                                .onChange(of: self.gridLayoutCount, perform: { value in
+                                    if self.gridLayoutCount == 1 {
+                                        self.gridLayout = [GridItem(.flexible())]
+                                    }
+                                    else
+                                    {
+                                        self.gridLayout = [GridItem(.flexible()), GridItem(.flexible())]
+                                    }
+                                })
+                            }
+                            
+                        }
+                       
+                        .navigationBarTitleDisplayMode(.inline)
+                        .navigationBarHidden(self.isNavigationBarHidden)
+                        .onAppear() {
+                            self.isNavigationBarHidden = true
+                            
+                        }
+                        
+                    }
+                }
                 
-                VStack {
-                    TopBarView()
-                        .padding(.all, 10)
+                if showDetails {
+                    
+                    BlankView(bgColor: .black)
+                        .opacity(0.3)
                         .onTapGesture {
-                            if self.gridLayoutCount == 2 {
-                                self.gridLayoutCount = 1
-                            }  else { self.gridLayoutCount = 2 }
+                            self.showDetails = false
                         }
                     
-                    ScrollView{
-                        if !isHaveData {
-                            NoDataView()
-                        }
-                        else
-                        {
-                            VStack {
-                                SearchBarView(text: $searchText, gridLayouCount: $gridLayoutCount)
-                                CategoryView(movieType: $movieType)
-                                    .padding(.leading, 20)
-                                    .padding(.vertical, 10)
-                                NowShowing(showDetails: $showDetails, movieType: self.movieType, selectedSeries: $selectedSeries)
-                                    .padding(.leading, 20)
-                                    .padding(.vertical, 10)
-                                TrendingView(gridLayout: gridLayout, moviesList: modelData.movies)
-                                    .padding(.vertical, 10)
-                                    .padding(.horizontal, 10)
-                            }
-                            .onChange(of: self.gridLayoutCount, perform: { value in
-                                if self.gridLayoutCount == 1 {
-                                    self.gridLayout = [GridItem(.flexible())]
-                                }
-                                else
-                                {
-                                    self.gridLayout = [GridItem(.flexible()), GridItem(.flexible())]
-                                }
-                            })
-                        }
-                        
-                    }
-                   
-                    .navigationBarTitleDisplayMode(.inline)
-                    .navigationBarHidden(self.isNavigationBarHidden)
-                    .onAppear() {
-                        self.isNavigationBarHidden = true
-                        
-                    }
+                    MovieDetailsView(isShow: $showDetails, seriesModel: selectedSeries)
+                        .transition(.move(edge: .bottom))
+                        .animation(.easeOut(duration: 0.2))
                     
                 }
-            }
-            
-            if showDetails {
-                
-                BlankView(bgColor: .black)
-                    .opacity(0.3)
-                    .onTapGesture {
-                        self.showDetails = false
-                    }
-                
-                MovieDetailsView(isShow: $showDetails, seriesModel: selectedSeries)
-                    .transition(.move(edge: .bottom))
-                    .animation(.easeOut(duration: 0.2))
                 
             }
-            
         }
         
         
@@ -193,7 +195,7 @@ struct CategoryView: View {
 }
 
 //Example view for load data from local model data
-struct NowShowing: View {
+struct NowShowingView: View {
     
     @Binding var showDetails: Bool
     
@@ -206,7 +208,7 @@ struct NowShowing: View {
                 .padding(.bottom, 20)
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
-                    ForEach(movieType == MoviesType.all ? seriesList :  seriesList.filter { $0.type == movieType}) { series in
+                    ForEach(movieType == MoviesType.all ? nowShowingList :  nowShowingList.filter { $0.type == movieType}) { series in
                        
                             MovieCardsView(imageName: series.image, title: series.title, ratings: series.ratings, showFavorite: false )
                                 .frame(width: 200, height: 300)
@@ -227,8 +229,8 @@ struct NowShowing: View {
 struct TrendingView: View {
     
     var gridLayout: [GridItem]
-    var moviesList: [MovieData.Movie]
-    
+//    var moviesList: [MovieData.Movie]
+    var modelData: ModelData
     var body: some View {
         VStack(alignment: .leading) {
             Text("Treding")
@@ -236,10 +238,12 @@ struct TrendingView: View {
                 .padding(.bottom, 20)
               
             LazyVGrid(columns: gridLayout, alignment: .center, spacing: 10) {
-                ForEach(moviesList.indices, id:\.self) { index in
+                let  lists = modelData.movies
+                
+                ForEach(lists.indices, id:\.self) { index in
                     
-                    NavigationLink(destination: MovieDetailView(series: moviesList[index])) {
-                        MovieCardsView(imageName: moviesList[index].posterUrl, title: moviesList[index].title, ratings: "4.5", showFavorite: true, isFavotire: moviesList[index].isFavorite)
+                    NavigationLink(destination: MovieDetailView(series: lists[index])) {
+                        MovieCardsView(imageName: lists[index].posterUrl, title: lists[index].title, ratings: "4.5", showFavorite: true, isFavotire: lists[index].isFavorite)
                             .frame(minWidth: 0, maxWidth: .infinity)
                             .frame(height: 200)
                         .animation(.interactiveSpring())
@@ -252,9 +256,9 @@ struct TrendingView: View {
         
     }
 }
-struct HomeListView_Previews: PreviewProvider {
+struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeListView()
+        HomeView()
             .environmentObject(ModelData() )
     }
 }

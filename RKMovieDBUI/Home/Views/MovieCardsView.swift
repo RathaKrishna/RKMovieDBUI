@@ -82,6 +82,6 @@ struct MovieCardsView: View {
 
 struct MovieCardsView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieCardsView(imageName: seriesList[0].image, title: seriesList[0].title, ratings: "4.5", showFavorite: true)
+        MovieCardsView(imageName: nowShowingList[0].image, title: nowShowingList[0].title, ratings: "4.5", showFavorite: true)
     }
 }
