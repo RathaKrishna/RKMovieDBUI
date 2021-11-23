@@ -16,7 +16,7 @@ struct MovieCardsView: View {
     let showFavorite: Bool
     var isFavotire: Bool?
     
-    let gradient = Gradient(colors: [Color(red: 251/255, green: 255/255, blue: 255/255, opacity: 0.5),Color(red: 251/255, green: 255/255, blue: 255/255, opacity: 0.3),  .clear])
+    let gradient = Gradient(colors: [Color.black.opacity(0.6 ),Color.black.opacity(0)])
     var body: some View {
         ZStack {
             GeometryReader { geometry in
@@ -30,7 +30,7 @@ struct MovieCardsView: View {
                     .overlay(
                         
                         RoundedRectangle(cornerRadius: 15.0)
-                                .fill(LinearGradient(gradient: gradient, startPoint: .bottom, endPoint: .top))
+                                .fill(LinearGradient(gradient: gradient, startPoint: .bottom, endPoint: .center))
                                 .overlay(
                                     VStack {
                                         HStack(alignment: .center) {
@@ -85,3 +85,6 @@ struct MovieCardsView_Previews: PreviewProvider {
         MovieCardsView(imageName: nowShowingList[0].image, title: nowShowingList[0].title, ratings: "4.5", showFavorite: true)
     }
 }
+
+
+

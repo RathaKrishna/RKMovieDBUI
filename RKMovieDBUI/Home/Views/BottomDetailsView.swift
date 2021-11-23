@@ -10,7 +10,7 @@ import SDWebImageSwiftUI
 
 //sample view for using Bottom sheet
 
-struct MovieDetailsView: View {
+struct BottomDetailsView: View {
     @Binding var isShow: Bool
     
     @State var seriesModel: Series
@@ -90,8 +90,8 @@ struct MovieDetailsView: View {
     }
 }
 
-struct MovieDetailsView_Previews: PreviewProvider {
+struct BottomDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieDetailsView(isShow: .constant(false), seriesModel: nowShowingList[0])
+        BottomDetailsView(isShow: .constant(false), seriesModel: nowShowingList[0])
     }
 }

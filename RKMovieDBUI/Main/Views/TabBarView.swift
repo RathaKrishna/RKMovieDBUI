@@ -21,23 +21,29 @@ struct TabBarView: View {
     }
     var body: some View {
                
-                TabView(selection: $selectedTab) {
-                    HomeView()
-                        .tabItem {
-                            Image(systemName: self.selectedTab == .home ? "house.fill" : "house")
-                            Text("Home")
-                        }
-                        .tag(Tab.home)
-                    
-                    HomeListView()
-                        .tabItem {
-                            Image(systemName: self.selectedTab == .setting ? "film.fill" : "film")
-                            Text("Movies")
-                        }
-                        .tag(Tab.setting)
-                }
-               
-                .accentColor(.primaryColor)
+        NavigationView {
+            TabView(selection: $selectedTab) {
+                        HomeView()
+                            
+                            .tabItem {
+                                Image(systemName: self.selectedTab == .home ? "house.fill" : "house")
+                                Text("Local")
+                            }
+                            .tag(Tab.home)
+                        
+                        HomeListView()
+                            .tabItem {
+                                Image(systemName: self.selectedTab == .setting ? "film.fill" : "film")
+                                Text("Network")
+                            }
+                            .tag(Tab.setting)
+                            
+                    }
+                   
+            .accentColor(.primaryColor)
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarHidden(true)
+        }
                 
   
         

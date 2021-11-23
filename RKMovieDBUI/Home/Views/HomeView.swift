@@ -14,7 +14,6 @@ struct HomeView: View {
     @EnvironmentObject var modelData: ModelData
     
     @State private var isNavigationBarHidden = true
-    @State private var isHaveData = true
     @State private var searchText = ""
     @State private var movieType: MoviesType = .all
     
@@ -24,9 +23,8 @@ struct HomeView: View {
     
     @State private var showDetails = false
     @State private var selectedSeries = nowShowingList[0]
-        
+    
     var body: some View {
-        NavigationView {
             ZStack {
                 GeometryReader { geometry in
                     
@@ -40,36 +38,31 @@ struct HomeView: View {
                             }
                         
                         ScrollView{
-                            if !isHaveData {
-                                NoDataView()
-                            }
-                            else
-                            {
-                                VStack {
-                                    SearchBarView(text: $searchText, gridLayouCount: $gridLayoutCount)
-                                    CategoryView(movieType: $movieType)
-                                        .padding(.leading, 20)
-                                        .padding(.vertical, 10)
-                                    NowShowingView(showDetails: $showDetails, movieType: self.movieType, selectedSeries: $selectedSeries)
-                                        .padding(.leading, 20)
-                                        .padding(.vertical, 10)
-                                    TrendingView(gridLayout: gridLayout, modelData: modelData)
-                                        .padding(.vertical, 10)
-                                        .padding(.horizontal, 10)
-                                }
-                                .onChange(of: self.gridLayoutCount, perform: { value in
-                                    if self.gridLayoutCount == 1 {
-                                        self.gridLayout = [GridItem(.flexible())]
-                                    }
-                                    else
-                                    {
-                                        self.gridLayout = [GridItem(.flexible()), GridItem(.flexible())]
-                                    }
-                                })
-                            }
                             
+                            VStack {
+                                SearchBarView(text: $searchText, gridLayouCount: $gridLayoutCount)
+                                CategoryView(movieType: $movieType)
+                                    .padding(.leading, 20)
+                                    .padding(.vertical, 10)
+                                NowShowingView(showDetails: $showDetails, movieType: self.movieType, selectedSeries: $selectedSeries)
+                                    .padding(.leading, 20)
+                                    .padding(.vertical, 10)
+                                TrendingView(gridLayout: gridLayout, moviesList: modelData.movies)
+                                    .padding(.vertical, 10)
+                                    .padding(.horizontal, 10)
+                            }
+                            .onChange(of: self.gridLayoutCount, perform: { value in
+                                if self.gridLayoutCount == 1 {
+                                    self.gridLayout = [GridItem(.flexible())]
+                                }
+                                else
+                                {
+                                    self.gridLayout = [GridItem(.flexible()), GridItem(.flexible())]
+                                }
+                            })
                         }
-                       
+                        
+                        
                         .navigationBarTitleDisplayMode(.inline)
                         .navigationBarHidden(self.isNavigationBarHidden)
                         .onAppear() {
@@ -88,14 +81,14 @@ struct HomeView: View {
                             self.showDetails = false
                         }
                     
-                    MovieDetailsView(isShow: $showDetails, seriesModel: selectedSeries)
+                    BottomDetailsView(isShow: $showDetails, seriesModel: selectedSeries)
                         .transition(.move(edge: .bottom))
                         .animation(.easeOut(duration: 0.2))
                     
                 }
                 
             }
-        }
+        
         
         
     }
@@ -117,7 +110,7 @@ struct TopBarView: View {
                 Text("Book your favorite movies")
                     .font(.system(.subheadline, design: .rounded))
                     .foregroundColor(.secondary)
-                    
+                
             }
             
             Spacer()
@@ -133,7 +126,7 @@ struct TopBarView: View {
                         .padding(.leading,16)
                     
                 )
-                
+            
         }
     }
 }
@@ -157,7 +150,7 @@ struct AvatarView: View {
 struct CategoryView: View {
     
     @Binding var movieType: MoviesType
-  
+    
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -166,7 +159,7 @@ struct CategoryView: View {
                 .padding(.bottom, 20)
             
             ScrollView(.horizontal, showsIndicators: false) {
-               
+                
                 HStack {
                     ForEach(catogries){ catogry in
                         
@@ -184,7 +177,7 @@ struct CategoryView: View {
                         
                         
                         
-                         /*self.movieType == catogry.type ? BlackButtonStyle :*/
+                        /*self.movieType == catogry.type ? BlackButtonStyle :*/
                     }
                 }
                 
@@ -209,14 +202,14 @@ struct NowShowingView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
                     ForEach(movieType == MoviesType.all ? nowShowingList :  nowShowingList.filter { $0.type == movieType}) { series in
-                       
-                            MovieCardsView(imageName: series.image, title: series.title, ratings: series.ratings, showFavorite: false )
-                                .frame(width: 200, height: 300)
-                                .onTapGesture {
-                                    self.selectedSeries = series
-                                    self.showDetails = true
-                                }
-
+                        
+                        MovieCardsView(imageName: series.image, title: series.title, ratings: series.ratings, showFavorite: false )
+                            .frame(width: 200, height: 300)
+                            .onTapGesture {
+                                self.selectedSeries = series
+                                self.showDetails = true
+                            }
+                        
                     }
                 }
             }
@@ -229,26 +222,24 @@ struct NowShowingView: View {
 struct TrendingView: View {
     
     var gridLayout: [GridItem]
-//    var moviesList: [MovieData.Movie]
-    var modelData: ModelData
+    var moviesList: [Movie]
     var body: some View {
         VStack(alignment: .leading) {
             Text("Treding")
                 .font(.system(size: 25, weight: .bold, design: .rounded))
                 .padding(.bottom, 20)
-              
+            
             LazyVGrid(columns: gridLayout, alignment: .center, spacing: 10) {
-                let  lists = modelData.movies
                 
-                ForEach(lists.indices, id:\.self) { index in
+                ForEach(moviesList, id:\.self) { movie in
                     
-                    NavigationLink(destination: MovieDetailView(series: lists[index])) {
-                        MovieCardsView(imageName: lists[index].posterUrl, title: lists[index].title, ratings: "4.5", showFavorite: true, isFavotire: lists[index].isFavorite)
+                    NavigationLink(destination: MovieDetailView(series: movie)) {
+                        MovieCardsView(imageName: movie.posterUrl, title: movie.title, ratings: "4.5", showFavorite: true, isFavotire: movie.isFavorite)
                             .frame(minWidth: 0, maxWidth: .infinity)
                             .frame(height: 200)
-                        .animation(.interactiveSpring())
+                            .animation(.interactiveSpring())
                     }
-                      
+                    
                 }
             }
         }

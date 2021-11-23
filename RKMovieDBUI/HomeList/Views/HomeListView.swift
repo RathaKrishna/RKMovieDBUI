@@ -10,33 +10,48 @@ import SDWebImageSwiftUI
 
 struct HomeListView: View {
     
-    @State private var isNavigationBarHidden = false
     @StateObject private var viewModel = HomeViewModel()
     
+    
+    @State private var isNavigationBarHidden = true
+    @State private var showSetting = false
     var body: some View {
         
-        NavigationView {
+        VStack {
             ZStack {
                 if viewModel.isLoading {
-                    ScrollView {
-                        
-                        moviesView
-                        
+                    VStack {
+                        topView
+                            .padding(.all, 10)
+                        ScrollView {
+                            nowShowingView
+                                .frame(height: 300)
+                                .padding()
+                            moviesView
+                        }
                     }
+                    
                     
                 }
                 else
                 {
                     ProgressView()
-                        .foregroundColor(.primaryColor)
+ 
                 }
                 
+            }
+            .sheet(isPresented: $showSetting, content: {
+                SettingsView(genres: viewModel.genres)
+            })
+            .navigationBarHidden(self.isNavigationBarHidden)
+            .onAppear() {
+                self.isNavigationBarHidden = true
                 
             }
-            .navigationBarHidden(false)
-            .navigationBarTitle("Movies", displayMode: .inline)
+            
+            
         }
-        
+    
     }
 }
 
@@ -62,7 +77,7 @@ extension HomeListView {
                                 .bold()
                             HStack {
                                 ForEach(movie.genres, id: \.self){ genre in
-                                                                    
+                                    
                                     Text("\(genre)")
                                         .font(.subheadline)
                                         .foregroundColor(.gray)
@@ -87,9 +102,84 @@ extension HomeListView {
             }
         }
     }
+    
+    var nowShowingView: some View {
+        PageView(pages: viewModel.nowShowing.map {
+            PageCardView(image: $0.posterUrl, title: $0.title)
+            
+        })
+    }
+    
+    var topView: some View {
+        HStack {
+            RoundedRectangle(cornerRadius: 2)
+                .fill(Color.primaryColor)
+                .frame(width: 10, height: 60)
+                
+            VStack(alignment: .leading) {
+                Text("Hello Ratha")
+                    .font(.system(.headline, design: .rounded))
+                    .fontWeight(.bold)
+                Text("Movies from network api")
+                    .font(.system(.subheadline, design: .rounded))
+                    .foregroundColor(.secondary)
+            }
+            Spacer()
+            Button(action: {
+                self.showSetting = true
+            }){
+                Image(systemName: "gear")
+                    .font(.system(size: 28))
+                    .foregroundColor(.secondary)
+            }
+        }
+    }
 }
+
+struct PageCardView: View {
+    var image: String
+    var title: String
+    
+    var body: some View {
+        ZStack(alignment: .bottomLeading) {
+            WebImage(url: URL(string: image))
+                .placeholder(Image("no_movie"))
+                .resizable()
+                .scaledToFill()
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+            
+            
+            TextOverlay(title: title)
+            
+        }
+    }
+}
+
+struct TextOverlay: View {
+    var title: String
+    var gradient: LinearGradient {
+        LinearGradient(gradient: Gradient(colors: [Color.black.opacity(0.6), Color.black.opacity(0)]), startPoint: .bottom, endPoint: .center)
+    }
+    
+    var body: some View {
+        ZStack(alignment: .bottomLeading) {
+            Rectangle().fill(gradient)
+            VStack(alignment: .leading){
+                Text(title)
+                    .font(.system(.title, design: .rounded))
+                    .bold()
+            }
+            .padding()
+        }
+        .foregroundColor(.white)
+    }
+}
+
 struct HomeListView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeListView()
+        Group {
+            HomeListView()
+            PageCardView(image: "https://m.media-amazon.com/images/M/MV5BMTg0NTM3MTI1MF5BMl5BanBnXkFtZTgwMTAzNTAzNzE@._V1_.jpg", title: "Movie title")
+        }
     }
 }
