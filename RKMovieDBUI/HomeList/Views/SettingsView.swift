@@ -16,12 +16,16 @@ struct SettingsView: View {
         NavigationView {
             Form {
                 Section(header: Text("Movie Prefrence")) {
-                    Picker(selection: $selectedOrder, label: Text("Genre"), content: {
+                    
+                    Picker(selection: $selectedOrder, label: Text("Display Order")) {
                         ForEach(genres, id: \.self) { genre in
                             Text(genre.title)
                         }
-                    })
+                    }
                 }
+            }
+            .onAppear {
+                self.selectedOrder = "All"
             }
             .navigationBarTitle("Setting", displayMode: .inline)
             .navigationBarItems(leading: Button(action: {}, label: {
@@ -31,6 +35,7 @@ struct SettingsView: View {
                 Text("Save")
                     .foregroundColor(.primary)
             }))
+            
         }
     }
 }

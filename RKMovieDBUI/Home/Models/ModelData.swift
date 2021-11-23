@@ -1,7 +1,7 @@
 //
 //  ModelData.swift
 //  RKMovieDBUI
-//
+//  Example Combine Object 
 //  Created by Rathakrishnan on 16/11/21.
 //
 
@@ -21,11 +21,11 @@ final class ModelData: ObservableObject {
     var genres: [String] {
         movieData.genres
     }
-    
+    // TODO: - Filter by categories
     var categories: [[String]: [Movie]] {
         Dictionary( grouping: movies, by: { $0.genres})
     }
-
+    // TODO: - Filter by Genres
     func byGenres(genre: String) -> [Movie] {
         if genre == "All" {
             return movieData.movies

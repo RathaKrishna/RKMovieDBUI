@@ -24,8 +24,8 @@ struct PageView<Page: View>: View {
 struct PageView_Previews: PreviewProvider {
     static var previews: some View {
         PageView(pages: [
-            MovieCardsView(imageName: "https://m.media-amazon.com/images/M/MV5BMTg0NTM3MTI1MF5BMl5BanBnXkFtZTgwMTAzNTAzNzE@._V1_.jpg", title: "Title", ratings: "4.5", showFavorite: false, isFavotire: false) ,
-            MovieCardsView(imageName: "https://m.media-amazon.com/images/M/MV5BZGFmZjQ0ZTYtNjNkOC00OTAxLTlmMWMtNThmMWRkMTcyODY0XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg", title: "Title", ratings: "4.5", showFavorite: false, isFavotire: false) ,
+            PageCardView(image: "https://m.media-amazon.com/images/M/MV5BMTg0NTM3MTI1MF5BMl5BanBnXkFtZTgwMTAzNTAzNzE@._V1_.jpg", title: "Title") ,
+            PageCardView(image: "https://m.media-amazon.com/images/M/MV5BZGFmZjQ0ZTYtNjNkOC00OTAxLTlmMWMtNThmMWRkMTcyODY0XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg", title: "Title") ,
         ])
         .aspectRatio(3 / 2, contentMode: .fit)
     }

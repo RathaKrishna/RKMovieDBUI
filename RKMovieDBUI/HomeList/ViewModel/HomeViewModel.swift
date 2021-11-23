@@ -1,7 +1,7 @@
 //
 //  HomeViewModel.swift
 //  RKMovieDBUI
-//
+//  Sample MVVM architecture ViewModel
 //  Created by Rathakrishnan on 19/11/21.
 //
 

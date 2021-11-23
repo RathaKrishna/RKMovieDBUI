@@ -1,7 +1,7 @@
 //
 //  SettingsView.swift
 //  RkMovieUI
-//
+//  Sample MVVM architecture View, gets data from Network
 //  Created by Rathakrishnan on 11/11/21.
 //
 
@@ -10,8 +10,8 @@ import SDWebImageSwiftUI
 
 struct HomeListView: View {
     
+    //Initiate View Model
     @StateObject private var viewModel = HomeViewModel()
-    
     
     @State private var isNavigationBarHidden = true
     @State private var showSetting = false
@@ -42,7 +42,7 @@ struct HomeListView: View {
             }
             .sheet(isPresented: $showSetting, content: {
                 SettingsView(genres: viewModel.genres)
-            })
+            }) // Example for using bottom sheet component
             .navigationBarHidden(self.isNavigationBarHidden)
             .onAppear() {
                 self.isNavigationBarHidden = true

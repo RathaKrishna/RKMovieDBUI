@@ -2,13 +2,13 @@
 //  MovieDetailsView.swift
 //  RKMovieDBUI
 //
+//  sample view for using Bottom sheet, used Hard coded data
 //  Created by Rathakrishnan on 13/11/21.
 //
 
 import SwiftUI
 import SDWebImageSwiftUI
 
-//sample view for using Bottom sheet
 
 struct BottomDetailsView: View {
     @Binding var isShow: Bool

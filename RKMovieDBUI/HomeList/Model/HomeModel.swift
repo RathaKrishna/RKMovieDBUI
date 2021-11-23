@@ -1,7 +1,7 @@
 //
 //  HomeModel.swift
 //  RKMovieDBUI
-//
+//  Sample MVVM architecture Model
 //  Created by Rathakrishnan on 19/11/21.
 //
 

@@ -30,50 +30,46 @@ struct MovieCardsView: View {
                     .overlay(
                         
                         RoundedRectangle(cornerRadius: 15.0)
-                                .fill(LinearGradient(gradient: gradient, startPoint: .bottom, endPoint: .center))
-                                .overlay(
-                                    VStack {
-                                        HStack(alignment: .center) {
-                                            Spacer()
-                                            if showFavorite  {
-                                                if isFavotire ?? false {
-                                                    Image(systemName: "heart.fill")
-                                                        .foregroundColor(.yellow)
-                                                        .font(.system(size: 22))
-                                                }
-                                                
+                            .fill(LinearGradient(gradient: gradient, startPoint: .bottom, endPoint: .center))
+                            .overlay(
+                                VStack {
+                                    HStack(alignment: .center) {
+                                        Spacer()
+                                        if showFavorite  {
+                                            if isFavotire ?? false {
+                                                Image(systemName: "heart.fill")
+                                                    .foregroundColor(.yellow)
+                                                    .font(.system(size: 22))
                                             }
-                                            else
-                                            {
+                                            
+                                        }
+                                        else
+                                        {
                                             Image(systemName: "star.fill")
                                                 .foregroundColor(.yellow)
                                                 .font(.system(size: 22))
                                             
-                                           Text("\(ratings)")
-                                            .font(.system(size: 18, weight: .bold, design: .rounded))
-                                            .foregroundColor(.white)
-                                            }
-                                            
+                                            Text("\(ratings)")
+                                                .font(.system(size: 18, weight: .bold, design: .rounded))
+                                                .foregroundColor(.white)
                                         }
-                                        .padding()
                                         
-                                        Spacer()
-                                        
-                                        Text(self.title)
+                                    }
+                                    .padding()
+                                    
+                                    Spacer()
+                                    
+                                    Text(self.title)
                                         .font(.system(.title2, design: .rounded))
                                         .fontWeight(.bold)
                                         .foregroundColor(.white)
                                         .padding()
                                         .frame(width: geometry.size.width, alignment: .bottomLeading)
-                                        
-                                       
-                                    }
-                                )
-                                .frame(width: geometry.size.width, height: geometry.size.height , alignment: .bottomLeading)
-                                
-                                
-                                
-                        
+                                    
+                                    
+                                }
+                            )
+                            .frame(width: geometry.size.width, height: geometry.size.height , alignment: .bottomLeading)
                     )
             }
         }

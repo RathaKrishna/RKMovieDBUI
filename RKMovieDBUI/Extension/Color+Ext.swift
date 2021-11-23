@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-
+// Example usage of Extension
 extension Color {
     
   public init(red: Int, green: Int, blue: Int, opacity: Double = 1.0) {

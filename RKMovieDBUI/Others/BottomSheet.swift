@@ -1,7 +1,7 @@
 //
 //  BottomSheet.swift
 //  RKMovieDBUI
-//
+//  Custom Bottom Sheet , example from AppCoda
 //  Created by Rathakrishnan on 13/11/21.
 //
 

@@ -1,7 +1,7 @@
 //
 //  HomeListView.swift
 //  RkMovieUI
-//
+//  Example view which loads data from local file
 //  Created by Rathakrishnan on 11/11/21.
 //
 
@@ -80,7 +80,7 @@ struct HomeView: View {
                         .onTapGesture {
                             self.showDetails = false
                         }
-                    
+                    // show custom bottom view 
                     BottomDetailsView(isShow: $showDetails, seriesModel: selectedSeries)
                         .transition(.move(edge: .bottom))
                         .animation(.easeOut(duration: 0.2))
