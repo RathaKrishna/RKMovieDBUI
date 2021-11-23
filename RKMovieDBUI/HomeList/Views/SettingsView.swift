@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+// TODO: functional settings
 struct SettingsView: View {
     
     var genres: [Genre]
