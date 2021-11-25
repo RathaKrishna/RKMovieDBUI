@@ -1,6 +1,6 @@
 # RKMovieDBUI
 
-Simple Movie Booking app demo UI with Combine, LazyGrids, Lists, Custom Bottom Sheet, Scrollview and other SwiftUI components. 
+Simple Movie Booking app demo UI with MVVM, Combine, DispatchGroup, LazyGrids, Lists, Custom Bottom Sheet, Scrollview with other SwiftUI components. This app has examples for how to load data from Network Api, local Json file and Model data. 
 
 
 
