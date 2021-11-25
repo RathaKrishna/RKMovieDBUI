@@ -40,11 +40,3 @@ struct Movie: Codable, Hashable {
     
 }
 
-extension String {
-    var calculatedTime: String {
-        let dRunTime = (self as NSString).doubleValue
-        let toSeconds = dRunTime * 60.0
-        let result = toSeconds.asString(style: .abbreviated)
-        return result
-    }
-}
