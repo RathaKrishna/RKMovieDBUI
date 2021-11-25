@@ -90,7 +90,7 @@ extension HomeListView {
                             HStack{
                                 Image(systemName: "star.fill")
                                     .foregroundColor(.yellow)
-                                Text("\(Int.random(in: 3..<5)) . \(Helpers().calculateTime(runTime: movie.runtime)) mins. $\(Int.random(in: 10..<100)) for two")
+                                Text("\(Int.random(in: 3..<5)) . \(movie.runtime.calculatedTime) mins. $\(Int.random(in: 10..<100)) for two")
                                     .font(.subheadline)
                                     .foregroundColor(.gray)
                             }

@@ -10,7 +10,6 @@
 		0401335827424E8A006F9674 /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401335727424E8A006F9674 /* BottomSheet.swift */; };
 		04671EEF2744D25600E90479 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04671EEE2744D25600E90479 /* Styles.swift */; };
 		046976EC27479C4000506344 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046976EB27479C4000506344 /* HomeModel.swift */; };
-		046976F427479EA900506344 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046976F327479EA900506344 /* Helpers.swift */; };
 		046976FC2747A5C200506344 /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046976F92747A5C200506344 /* PageControl.swift */; };
 		046976FD2747A5C200506344 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046976FA2747A5C200506344 /* PageViewController.swift */; };
 		046976FE2747A5C200506344 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046976FB2747A5C200506344 /* PageView.swift */; };
@@ -61,7 +60,6 @@
 		0401335727424E8A006F9674 /* BottomSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
 		04671EEE2744D25600E90479 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		046976EB27479C4000506344 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
-		046976F327479EA900506344 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		046976F92747A5C200506344 /* PageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
 		046976FA2747A5C200506344 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		046976FB2747A5C200506344 /* PageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
@@ -271,7 +269,6 @@
 				0401335727424E8A006F9674 /* BottomSheet.swift */,
 				04CDC42F273F61D600A69D6A /* BlankView.swift */,
 				04671EEE2744D25600E90479 /* Styles.swift */,
-				046976F327479EA900506344 /* Helpers.swift */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -460,7 +457,6 @@
 				0478EE912743A176001BA14E /* ModelData.swift in Sources */,
 				046976FD2747A5C200506344 /* PageViewController.swift in Sources */,
 				0488FD3F273E62D300E73C66 /* RKMovieDBUIApp.swift in Sources */,
-				046976F427479EA900506344 /* Helpers.swift in Sources */,
 				0488FD88273E641900E73C66 /* HomeView.swift in Sources */,
 				04CDC430273F61D600A69D6A /* BlankView.swift in Sources */,
 				046976FE2747A5C200506344 /* PageView.swift in Sources */,

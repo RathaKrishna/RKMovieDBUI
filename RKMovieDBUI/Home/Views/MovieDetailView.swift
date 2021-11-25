@@ -176,7 +176,7 @@ struct DetailsHeaderImageView: View {
                             Circle()
                                 .foregroundColor(Color.white.opacity(1))
                                 .frame(width: 8, height: 8, alignment: .center)
-                            Text(Helpers().calculateTime(runTime: series.runtime))
+                            Text(series.runtime.calculatedTime)
                                 .font(.system(.title3, design: .rounded))
                                 .foregroundColor(.white)
                             
