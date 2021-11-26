@@ -18,6 +18,7 @@ struct TabBarView: View {
     init() {
         UITabBar.appearance().backgroundColor = .white
         UITabBar.appearance().isOpaque = false
+        UIWindow.appearance().overrideUserInterfaceStyle = .dark
     }
     var body: some View {
                

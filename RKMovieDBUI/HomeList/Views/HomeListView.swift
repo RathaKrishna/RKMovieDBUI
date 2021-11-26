@@ -42,15 +42,17 @@ struct HomeListView: View {
                 }
                 
             }
+            .navigationBarHidden(self.isNavigationBarHidden)
             .sheet(isPresented: $showSetting, content: {
                 SettingsView(genres: viewModel.genres)
             }) // Example for using bottom sheet component
-            .navigationBarHidden(self.isNavigationBarHidden)
-            .onAppear() {
-                self.isNavigationBarHidden = true
-                
-            }
             
+            
+            
+            
+        }
+        .onAppear() {
+            self.isNavigationBarHidden = true
             
         }
     
@@ -110,6 +112,7 @@ extension HomeListView {
             PageCardView(image: $0.posterUrl, title: $0.title)
             
         })
+        
     }
     
     var topView: some View {
