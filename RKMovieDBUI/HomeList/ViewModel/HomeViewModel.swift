@@ -40,7 +40,9 @@ class HomeViewModel: ObservableObject {
         dispatchGroup.enter()
         
         // Call first task
-        getData(EndApis.genresApi.url, [Genre].self) { data in
+        
+        let genresReq = APIRequest.init(url: EndApis.genresApi.url)
+        genresReq.getData([Genre].self) { data in
             self.genres = data
             
             //After get data, leve the group
@@ -51,7 +53,8 @@ class HomeViewModel: ObservableObject {
         dispatchGroup.enter()
         
         //call second data
-        getData(EndApis.nowShowingApi.url, [NowShowing].self) { data in
+        let nowShowingReq = APIRequest.init(url: EndApis.nowShowingApi.url)
+        nowShowingReq.getData( [NowShowing].self) { data in
             self.nowShowing = data
             //leave group
             dispatchGroup.leave()
@@ -61,11 +64,13 @@ class HomeViewModel: ObservableObject {
         dispatchGroup.enter()
         
         //call movies json
-        getData(EndApis.moviesApi.url, [Movie].self) { data in
+        let movieReq = APIRequest.init(url: EndApis.moviesApi.url)
+        movieReq.getData([Movie].self) { data in
             self.movies = data
             // leave group
             dispatchGroup.leave()
         }
+
         
         //Notify main thred
         dispatchGroup.notify(queue: .main) {
@@ -73,13 +78,5 @@ class HomeViewModel: ObservableObject {
         }
     }
     
-    private func getData<DataKind: Codable>(_ url: String, _ dataKind: DataKind.Type, _ completion: @escaping (_ data: DataKind)->Void) {
-        let url = URL(string: url)
-        URLSession.shared.dataTask(with: url!) { data, response, error in
-            if error == nil && data != nil {
-                let convertedData = try! JSONDecoder().decode(dataKind, from: data!)
-                completion(convertedData)
-            }
-        }.resume()
-    }
+   
 }
