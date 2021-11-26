@@ -10,6 +10,8 @@ import SDWebImageSwiftUI
 
 struct HomeListView: View {
     
+    @EnvironmentObject var modelData: ModelData
+
     //Initiate View Model
     @StateObject private var viewModel = HomeViewModel()
     
@@ -59,7 +61,7 @@ extension HomeListView {
     
     var moviesView: some View {
         VStack {
-            ForEach(viewModel.movies, id: \.self){ movie in
+            ForEach(viewModel.byGenres(genre: modelData.movieGenre, movies: viewModel.movies), id: \.self){ movie in
                 NavigationLink(destination: MovieDetailView(series: movie)) {
                     HStack {
                         WebImage(url: URL(string: movie.posterUrl))
@@ -178,7 +180,7 @@ struct TextOverlay: View {
 struct HomeListView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            HomeListView()
+            HomeListView().environmentObject(ModelData())
             PageCardView(image: "https://m.media-amazon.com/images/M/MV5BMTg0NTM3MTI1MF5BMl5BanBnXkFtZTgwMTAzNTAzNzE@._V1_.jpg", title: "Movie title")
         }
     }

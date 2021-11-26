@@ -12,7 +12,25 @@ import Combine
 final class ModelData: ObservableObject {
     
     @Published var movieData: MovieData = load("movie_db.json")
-   
+    
+    init() {
+        UserDefaults.standard.register(defaults: [
+                                        "view.prefrence.movieGenre" : "All" ,
+                                        "view.prefrence.genreIndex" : 0 ])
+    }
+    
+    @Published var movieGenre: String = UserDefaults.standard.string(forKey: "view.prefrence.movieGenre") ?? "All" {
+        didSet {
+            UserDefaults.standard.set(movieGenre, forKey: "view.prefrence.movieGenre")
+        }
+    }
+    
+    @Published var genreIndex: Int = UserDefaults.standard.integer(forKey: "view.prefrence.genreIndex") {
+        didSet {
+            UserDefaults.standard.set(genreIndex, forKey: "view.prefrence.genreIndex")
+        }
+    }
+    
     
     var movies: [Movie] {
         movieData.movies
@@ -25,16 +43,15 @@ final class ModelData: ObservableObject {
     var categories: [[String]: [Movie]] {
         Dictionary( grouping: movies, by: { $0.genres})
     }
-    // TODO: - Filter by Genres
-    func byGenres(genre: String) -> [Movie] {
-        if genre == "All" {
-            return movieData.movies
-        }
-       return  movieData.movies.filter { $0.genres.contains(genre) }
-    }
+   
+    
+    
+    
+    
 }
 
 
+//load local file 
 func load<T: Decodable>(_ filename: String) -> T {
     
     let data: Data

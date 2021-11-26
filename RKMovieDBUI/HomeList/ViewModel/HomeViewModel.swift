@@ -11,7 +11,7 @@ import Combine
 class HomeViewModel: ObservableObject {
     
     @Published var isLoading: Bool = false
-    
+    @Published var selectedGenre = "All"
     var genres = [Genre]()
     var nowShowing = [NowShowing]()
     var movies = [Movie]()
@@ -79,4 +79,11 @@ class HomeViewModel: ObservableObject {
     }
     
    
+    // MARK: - Filter by Genres
+    func byGenres(genre: String, movies: [Movie]) -> [Movie] {
+        if genre == "All" {
+            return movies
+        }
+       return movies.filter { $0.genres.contains(genre) }
+    }
 }

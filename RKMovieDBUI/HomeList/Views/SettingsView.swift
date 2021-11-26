@@ -9,39 +9,52 @@ import SwiftUI
 // TODO: functional settings
 struct SettingsView: View {
     
+    @Environment(\.presentationMode) var presentationMode
+
+    @EnvironmentObject var modelData: ModelData
+    
+    //Initiate View Model
     var genres: [Genre]
-    @State private var selectedOrder = "All"
+    @State private var selectedGenre = 0
     
     var body: some View {
         NavigationView {
             Form {
                 Section(header: Text("Movie Prefrence")) {
                     
-                    Picker(selection: $selectedOrder, label: Text("Display Order")) {
-                        ForEach(genres, id: \.self) { genre in
-                            Text(genre.title)
+                    Picker(selection: $selectedGenre, label: Text("Display Order")) {
+                       
+                        ForEach(genres.indices, id: \.self) { index in
+                            Text(genres[index].title)
                         }
                     }
                 }
             }
-            .onAppear {
-                self.selectedOrder = "All"
-            }
+           
             .navigationBarTitle("Setting", displayMode: .inline)
-            .navigationBarItems(leading: Button(action: {}, label: {
+            .navigationBarItems(leading: Button(action: {
+                self.presentationMode.wrappedValue.dismiss()
+            }, label: {
                 Text("Cancel")
                     .foregroundColor(.primary)
-            }), trailing: Button(action: {}, label: {
+            }), trailing: Button(action: {
+                self.modelData.genreIndex = self.selectedGenre
+                self.modelData.movieGenre = genres[self.selectedGenre].title
+                self.presentationMode.wrappedValue.dismiss()
+            }, label: {
                 Text("Save")
                     .foregroundColor(.primary)
             }))
             
+        }
+        .onAppear {
+            self.selectedGenre = modelData.genreIndex
         }
     }
 }
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView(genres: [Genre(title: "All")])
+        SettingsView(genres: [Genre(title: "All")]).environmentObject(ModelData())
     }
 }
