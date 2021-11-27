@@ -32,24 +32,19 @@ struct HomeListView: View {
                             moviesView
                         }
                     }
-                    
-                    
+
                 }
                 else
                 {
                     ProgressView()
  
                 }
-                
             }
+            .navigationTitle(Text("Check"))
             .navigationBarHidden(self.isNavigationBarHidden)
             .sheet(isPresented: $showSetting, content: {
                 SettingsView(genres: viewModel.genres)
             }) // Example for using bottom sheet component
-            
-            
-            
-            
         }
         .onAppear() {
             self.isNavigationBarHidden = true

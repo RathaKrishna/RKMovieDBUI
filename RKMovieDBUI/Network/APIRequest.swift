@@ -9,15 +9,15 @@ import Foundation
 
 class APIRequest {
     
-    let url: String
+//    let url: String
+//
+//    init(url: String)  {
+//        self.url = url
+//
+//    }
     
-    init(url: String)  {
-        self.url = url
-        
-    }
-    
-     func getData<DataKind: Codable>( _ dataKind: DataKind.Type, _ completion: @escaping (_ data: DataKind)->Void) {
-        let url = URL(string: self.url)
+    func getData<DataKind: Codable>(_ url: String, _ dataKind: DataKind.Type, _ completion: @escaping (_ data: DataKind)->Void) {
+        let url = URL(string: url)
         URLSession.shared.dataTask(with: url!) { data, response, error in
             if error == nil && data != nil {
                 let convertedData = try! JSONDecoder().decode(dataKind, from: data!)
