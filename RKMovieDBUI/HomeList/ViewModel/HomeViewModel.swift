@@ -39,10 +39,10 @@ class HomeViewModel: ObservableObject {
         //Enter First Task
         dispatchGroup.enter()
         
-        // Call first task
+        // Initialize network request
         let request = APIRequest()
-        
-//        let genresReq = APIRequest.init(url: EndApis.genresApi.url)
+
+        // Call first task
         request.getData( EndApis.genresApi.url, [Genre].self) { data in
             self.genres = data
             
@@ -54,7 +54,6 @@ class HomeViewModel: ObservableObject {
         dispatchGroup.enter()
         
         //call second data
-//        let nowShowingReq = APIRequest.init(url: EndApis.nowShowingApi.url)
         request.getData( EndApis.nowShowingApi.url,[NowShowing].self) { data in
             self.nowShowing = data
             //leave group
@@ -65,14 +64,12 @@ class HomeViewModel: ObservableObject {
         dispatchGroup.enter()
         
         //call movies json
-//        let movieReq = APIRequest.init(url: EndApis.moviesApi.url)
         request.getData(EndApis.moviesApi.url, [Movie].self) { data in
             self.movies = data
             // leave group
             dispatchGroup.leave()
         }
 
-        
         //Notify main thred
         dispatchGroup.notify(queue: .main) {
             self.isLoading = true
