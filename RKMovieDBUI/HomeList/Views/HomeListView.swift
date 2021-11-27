@@ -25,12 +25,14 @@ struct HomeListView: View {
                     VStack {
                         topView
                             .padding(.all, 10)
+                        
                         ScrollView {
                             nowShowingView
                                 .frame(height: 300)
                                 .padding()
                             moviesView
                         }
+                        
                     }
 
                 }
